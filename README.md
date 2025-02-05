@@ -1,1 +1,1 @@
-#Finance App using Redux Thunk
+# Finance App using Redux Thunk
