@@ -20,8 +20,8 @@ const NewEntry=()=>{
         <label htmlFor="type">Entry Type:</label>
         <select className="form-control" onChange={event=>handleChange("entryType",event.target.value)}>
             <option value="">Select Field</option>
-            <option value="Income">Income</option>
-            <option value="Expense">Expense</option>
+            <option value="income">Income</option>
+            <option value="expenses">Expense</option>
         </select>
         <button  className="btn btn-primary my-2" type="submit">Add Entry</button>
         </form>
