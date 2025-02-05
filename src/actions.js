@@ -1,4 +1,4 @@
-import { addExpenseUrl, addIncomeUrl } from "./urls"
+import { addExpenseUrl, addIncomeUrl, fetchExpenseUrl, fetchIncomeUrl } from "./urls"
 
 export const addEntry=(entry)=>async(dispatch)=>{
     try {
@@ -18,3 +18,27 @@ export const addEntry=(entry)=>async(dispatch)=>{
         console.log("Error adding entry: ",error)
     }
 }
+export const fetchExpense=()=>async(dispatch)=>{
+try {
+    const response=await fetch(fetchExpenseUrl)
+    const data=await response.json()
+    if(data){
+        dispatch({type:"FETCH_EXPENSES_SUCCESS",payload:data})
+    }
+} catch (error) {
+    console.log("Error fetching expenses: ",error)
+}
+}
+
+
+export const fetchIncome=()=>async(dispatch)=>{
+    try {
+        const response=await fetch(fetchIncomeUrl)
+        const data=await response.json()
+        if(data){
+            dispatch({type:"FETCH_INCOME_SUCCESS",payload:data})
+        }
+    } catch (error) {
+        console.log("Error fetching income: ",error)
+    }
+    }
