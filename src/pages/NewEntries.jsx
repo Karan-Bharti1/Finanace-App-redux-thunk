@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addEntry } from "../actions";
 
 const NewEntry=()=>{
+    const [successMessage,setSuccessMessage]=useState("")
     const [entry,setEntry]=useState({
         description:"",
         amount:"",
@@ -18,6 +19,8 @@ const NewEntry=()=>{
         setEntry(()=>({ description:"",
         amount:"",
         entryType:""}))
+        setSuccessMessage("Entry Updated")
+        setTimeout(()=>setSuccessMessage(""),1500)
     }
     
     return(
@@ -36,6 +39,7 @@ const NewEntry=()=>{
         </select>
         <button  className="btn btn-primary my-2" onClick={handleAddEntry}>Add Entry</button>
         </form>
+        <h2>{successMessage}</h2>
         </main>
     )
 }

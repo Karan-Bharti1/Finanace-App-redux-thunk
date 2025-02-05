@@ -9,7 +9,7 @@ const Expense=()=>{
     const dispatch=useDispatch()
 useEffect(()=>{
     dispatch(fetchExpense())
-},[])
+},[dispatch])
     return(
         <>
         <Header/>
