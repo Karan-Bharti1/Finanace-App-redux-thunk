@@ -1,14 +1,25 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addEntry } from "../actions";
 
 const NewEntry=()=>{
-    const {entry,setEntry}=useState({
+    const [entry,setEntry]=useState({
         description:"",
         amount:"",
         entryType:""
     })
+    const dispatch=useDispatch()
     const handleChange=(key,value)=>{
-        setEntry({...entry,[key]:value})
+        setEntry(entry=>(key==="amount"?{...entry,amount:parseFloat(value)}:{...entry,[key]:value}))
     }
+    const handleAddEntry=e=>{
+        e.preventDefault()
+        dispatch(addEntry(entry))
+        setEntry(()=>({ description:"",
+        amount:"",
+        entryType:""}))
+    }
+    
     return(
         <main className="container my-3">
             <h2>New Entry Page</h2>
@@ -21,9 +32,9 @@ const NewEntry=()=>{
         <select className="form-control" onChange={event=>handleChange("entryType",event.target.value)}>
             <option value="">Select Field</option>
             <option value="income">Income</option>
-            <option value="expenses">Expense</option>
+            <option value="expense">Expense</option>
         </select>
-        <button  className="btn btn-primary my-2" type="submit">Add Entry</button>
+        <button  className="btn btn-primary my-2" onClick={handleAddEntry}>Add Entry</button>
         </form>
         </main>
     )

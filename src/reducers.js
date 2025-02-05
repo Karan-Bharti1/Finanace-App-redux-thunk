@@ -17,7 +17,8 @@ const financeReducer=(state=initialState,action)=>{
             case "ADD_ENTRY_SUCCESS":
                 if(action.payload.entryType==="income"){
                     return {...state,income:[...state.income,action.payload]}
-                }else{
+                }
+               if(action.payload.entryType==="expense") {
                     return {...state,expenses:[...state.expenses,action.payload]}
                 }
                 
